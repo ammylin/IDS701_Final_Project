@@ -36,7 +36,7 @@ The findings are intended to inform:
 |------|-------------|
 | `data/` | Raw HUD Excel files (`TRACT_MO_WY`), NHGIS census data, and cleaned panels (`clean_hcv_data.csv`, `clean_rc_data.csv`) |
 | `outputs/` | Resulting CSVs and visualizations from the event study |
-| `00_preprocessing.ipynb` | Constructs longitudinal panel from raw, tract-level HCV program data, and merges racial demographic data for desegregation analysis |
+| `00_preprocessing.ipynb` | Constructs longitudinal panel from raw HUD data, and merges racial demographic data for desegregation analysis |
 | `01_eda_pretrends.ipynb` | Baseline visualization and pre-trend validation |
 | `02_DiD.ipynb` | Main DiD estimation with tract and year fixed effects |
 | `03_DiD_graph.ipynb` | Comparative trend visualization |
@@ -54,7 +54,13 @@ The primary dataset (`data/clean_hcv_data.csv`) is a panel spanning **2014–202
 - `number_reported`: Count of active HCV households per tract (primary outcome)
 - `treatment`: Binary indicator (1 = Dallas County; 0 = Harris County)
 - `tpoverty`: Percentage of residents below the poverty line
-- **Racial composition indicators:** High-minority tracts (≥70% non-White)
+
+The secondary dataset (`data/clean_rc_data.csv`) contains tract-level data aggregated across two periods of time (2013-2017 and 2018-2022).
+
+**Key variables:**
+- `year`: 5-year period for aggregated data (pre-period = 2013-2017; post-period = 2018-2022)
+- `number_reported`: Average count of active HCV households per tract over specified 5-year period
+-  **Racial composition variables:** Variables representing racial composition cumulatively and by individual race to determine high-minority tracts (≥70% non-White)
 
 ---
 
@@ -109,7 +115,8 @@ The policy effect emerges gradually over time, consistent with housing market fr
 - matplotlib  
 - seaborn  
 - statsmodels  
-- linearmodels  
+- linearmodels
+- geopandas 
 
 **Workflow:**
 1. Run `00_preprocessing.ipynb` to generate clean datasets from raw files  
