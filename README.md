@@ -36,8 +36,7 @@ The findings are intended to inform:
 |------|-------------|
 | `data/` | Raw HUD Excel files (`TRACT_MO_WY`), NHGIS census data, and cleaned panels (`clean_hcv_data.csv`, `clean_rc_data.csv`) |
 | `outputs/` | Resulting CSVs and visualizations from the event study |
-| `00_preprocessing.ipynb` | Constructs longitudinal panel from raw HUD and census data |
-| `00_preprocessing_racial_composition.ipynb` | Merges racial demographic data for desegregation analysis |
+| `00_preprocessing.ipynb` | Constructs longitudinal panel from raw, tract-level HCV program data, and merges racial demographic data for desegregation analysis |
 | `01_eda_pretrends.ipynb` | Baseline visualization and pre-trend validation |
 | `02_DiD.ipynb` | Main DiD estimation with tract and year fixed effects |
 | `03_DiD_graph.ipynb` | Comparative trend visualization |
